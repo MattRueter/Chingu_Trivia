@@ -1,24 +1,15 @@
+import React, {useState} from 'react';
+import {questions} from '../data/questions.js';
 
 
-function fetchQuestions (){
-  return new Promise(resolve => {
- 
-    fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
-     .then((response) =>response.json())
-     .then((data) => {
-       resolve(data)
-     })
+//questions call below is testing 'consumption' of async code which 
+//fetches API info. See Questions.js file.
 
-  })
-}
-async function questions () {
-  const questionSet = await fetchQuestions();
-  console.log(questionSet);
-}
-questions();
 
 export default function App() {
+  const [question, setQuestion] = useState("")
+  questions(setQuestion)
   return (
-   <h1>Hello World</h1>
+   <h1>{question}</h1>
   );
 }
