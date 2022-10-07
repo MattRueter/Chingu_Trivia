@@ -7,8 +7,10 @@ import {questions} from '../data/questions.js';
 
 
 export default function Question() {
-  const [question, setQuestion] = useState("")
+  const [question, setQuestion] = useState("");
+
   questions(setQuestion)
+  
   return (
    <h2>{question}</h2>
   );

@@ -1,5 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {counter} from '../data/questions.js';
+
 
 export default function Counter (){
-	return <div># of total-#</div>
+	const [questionNumber, setQuestionNumber] = useState([])
+	
+	counter(setQuestionNumber);
+
+
+	return <div>{questionNumber} out of #total# </div>
 }
