@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../css/index.css';
 import Nav from './Nav.js';
 import Container from './Container.js';
 

@@ -6,7 +6,7 @@ import Options from './Options.js';
 
 export default function Container (){
 	return (
-		<div>
+		<div id="container">
 			<Counter />
 			<Question />
 			<Options />
