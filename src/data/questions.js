@@ -10,9 +10,23 @@ function fetchQuestions (){
 
   })
 }
+
+//******* Consuming data from fetchQuestions()*********/
+
 // use questions to access API data 
 // * will need to be flushed out to allow arguments to access multiple specific values.
-export async function questions (stateSetter) {
+async function questions (stateSetter) {
+
   const questionSet = await fetchQuestions();
   stateSetter(questionSet[0].question);
+  
 }
+async function optionSet (stateSetter){
+  
+  const questionSet = await fetchQuestions();
+  let options = Object.entries(questionSet[0].choices) 
+ 
+  stateSetter(options);
+}
+
+export {questions,optionSet};
