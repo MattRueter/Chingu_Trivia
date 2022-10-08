@@ -1,6 +1,6 @@
 
 
-export default function Counter ({questionNumber}){
+export default function Counter ({questionNumber,totalQuestions}){
 	
-	return <div>{questionNumber} out of #total# </div>
+	return <div>{questionNumber} out of {totalQuestions} </div>
 }

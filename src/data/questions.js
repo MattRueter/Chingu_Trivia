@@ -18,7 +18,7 @@ function fetchQuestions (){
 async function questions (stateSetter) {
 
   const questionSet = await fetchQuestions();
-  
+  console.log(questionSet)
   stateSetter(questionSet[0].question);
 }
 
@@ -36,5 +36,7 @@ async function counter (stateSetter){
   
   stateSetter(questionSet[0].id)
 }
+
+
 
 export {questions,optionSet, counter};
