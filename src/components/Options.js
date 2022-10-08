@@ -1,21 +1,15 @@
-import React, {useState} from 'react';
-import {optionSet} from '../data/questions.js';
+import React from 'react';
 
-export default function Options (){
-	const [options, setOptions] = useState([])
-
-	optionSet(setOptions)
-	
-	const optionList = options.map((option, index)=>{
-		return (
-			<div>
-				<div>{`${option[0]}:    ${option[1]}`} </div>		
-			</div>
-		)
-	})	
+export default function Options ({options}){
+		
 	return (
+
 		<div>
-			{optionList}
+			{options.map((option, index)=>{
+		return (			
+				<div key={index}>{`${option[0]}:    ${option[1]}`} </div>		
+		)
+	})}
 		</div>
 	)
 }
