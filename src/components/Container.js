@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {questions, optionSet} from '../data/questions.js';
+import {questions, optionSet, counter} from '../data/questions.js';
 import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
@@ -12,9 +12,12 @@ export default function Container (){
 	const [options, setOptions] = useState([])
 	optionSet(setOptions)
 
+	const [questionNumber, setQuestionNumber] = useState([])	
+	counter(setQuestionNumber);
+
 	return (
 		<div id="container">
-			<Counter />
+			<Counter questionNumber={questionNumber} />
 			<Question question={question} />
 			<Options options={options}/>
 			<button>NEXT</button>
