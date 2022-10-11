@@ -13,6 +13,7 @@ body{
 }
 button{
 	width:25%;
+	height:70px;
 	margin:5%;
 }
 /*NAVBAR styles*/
@@ -21,4 +22,17 @@ button{
 	background-color:rgb(151, 199, 241);
 	border-radius:15px;
 	padding:1%;
+}
+#optionsBox{
+	min-width:75%;
+	max-height: 40%;
+}
+.optionItem{
+	border:1px solid black;
+	min-width: 75%;
+	margin:3%;
+	padding:3%;
+}
+.optionItem:hover{
+	background-color:rgb(151, 199, 241);
 }
