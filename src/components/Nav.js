@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function Nav (){
 	return(
-		<nav>
-			<h1>Title</h1>
-			<div>Correct:</div>
-			<div>Incorrect:</div>
+		<nav id="navbar">
+			<h1>Chingu Trivia</h1>
+			<div>Correct: 0</div>
+			<div>Incorrect: 0</div>
 		</nav>
 	)
 }
