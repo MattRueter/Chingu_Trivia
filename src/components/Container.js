@@ -17,7 +17,7 @@ export default function Container (){
 
 	return (
 		<div id="container">
-			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
+			<Counter questionNumber={questionNumber} totalQuestions={45} />
 			<Question question={question} />
 			<Options options={options}/>
 			<button>NEXT</button>
