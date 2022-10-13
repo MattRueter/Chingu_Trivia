@@ -1,27 +1,33 @@
 import React, {useState, useEffect} from 'react';
 
-import {questions} from '../data/questions.js';
-//import {questions, optionSet, counter} from '../data/questions.js';
+
 import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
 
 export default function Container (){
-	const [questionsArray, setQuestionsArray] = useState([])
+	const [questionsArray, setQuestionsArray] = useState(null)
+	const [question, setQuestion] = useState("question")	
+	const [options, setOptions] = useState([])	
+	const [questionNumber, setQuestionNumber] = useState("one")
+	
 	useEffect(() => {
 		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
 		.then((response) =>response.json())
 		.then((data) => {
 		 setQuestionsArray([...data])
-		})
+		 updateCard(0)
+		})	
 	},[])
-	console.log(questionsArray[0])
 
-	const [question, setQuestion] = useState('Lipsom ....?')
+	console.log(questionsArray)
+
+	function updateCard(index){
+		setQuestion(questionsArray[index].question)
+		setOptions(Object.entries(questionsArray[index].choices) )
+		setQuestionNumber(questionsArray[index].id)
+	}
 	
-	const [options, setOptions] = useState(['a','b','c','d'])
-	
-	const [questionNumber, setQuestionNumber] = useState('one')	
 	
 	return (
 		<div id="container">
