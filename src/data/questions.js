@@ -13,18 +13,9 @@ function fetchQuestions (){
   
   
 }
-
 //******* Consuming data from fetchQuestions()*********/
-
 // use questions to access API data 
 // * will need to be flushed out to allow arguments to access multiple specific values.
-async function questions () {
-
-  await fetchQuestions();
-
-}
-export {questions}
-/*
 async function questions (stateSetter) {
 
   const questionSet = await fetchQuestions();
@@ -47,7 +38,3 @@ async function counter (stateSetter){
   stateSetter(questionSet[0].id)
 }
 
-
-
-export {questions,optionSet, counter};
-*/
