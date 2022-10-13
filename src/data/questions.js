@@ -1,20 +1,30 @@
 
 function fetchQuestions (){
+
   return new Promise(resolve => {
  
     fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
      .then((response) =>response.json())
      .then((data) => {
-       resolve(data)
+      resolve(data)     
      })
 
   })
+  
+  
 }
 
 //******* Consuming data from fetchQuestions()*********/
 
 // use questions to access API data 
 // * will need to be flushed out to allow arguments to access multiple specific values.
+async function questions () {
+
+  await fetchQuestions();
+
+}
+export {questions}
+/*
 async function questions (stateSetter) {
 
   const questionSet = await fetchQuestions();
@@ -40,3 +50,4 @@ async function counter (stateSetter){
 
 
 export {questions,optionSet, counter};
+*/
