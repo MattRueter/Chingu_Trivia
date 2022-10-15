@@ -21,10 +21,13 @@ export default function Container (){
 		})
 
 		const nextIndex = index +1
-		
-		setQuestionNumber(nextIndex+1);
-		setQuestion(questions[nextIndex].question);
-		setOptions(Object.entries(questions[nextIndex].choices))
+		if (nextIndex +1 > totalQuestions){
+
+		}else{
+			setQuestionNumber(nextIndex+1);
+			setQuestion(questions[nextIndex].question);
+			setOptions(Object.entries(questions[nextIndex].choices))
+		}
 	};
 
 	return (
