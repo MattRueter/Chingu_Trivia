@@ -19,11 +19,9 @@ export default function Container (){
 		const index = questions.findIndex(item =>{
 			return item.question===question
 		})
-		console.log(index);
 
 		const nextIndex = index +1
 		
-
 		setQuestionNumber(nextIndex+1);
 		setQuestion(questions[nextIndex].question);
 		setOptions(Object.entries(questions[nextIndex].choices))
