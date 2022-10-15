@@ -3,6 +3,6 @@ import React, {useState} from 'react';
 export default function Question({question}) {
   
   return (
-   <h2>{question}</h2>
+   <h2 id="question">{question}</h2>
   );
 }
