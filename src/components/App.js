@@ -10,6 +10,8 @@ export default function App() {
 	const [correct, setCorrect] = useState(user.correctResponses);
 	const [incorrect, setIncorrect] = useState(user.incorrectResponses);
 
+  
+
   return (
     <div>
       <Nav user={user} correct={correct} incorrect={incorrect}  />

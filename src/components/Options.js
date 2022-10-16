@@ -9,6 +9,7 @@ function selectAnswer (selectedChoice, key){
 	if(selectedChoice === answer){		
 		console.log("correct!")
 		currentOption.style.backgroundColor='green';
+		
 	}else{		
 		console.log("incorrect")
 		currentOption.style.backgroundColor='red';
