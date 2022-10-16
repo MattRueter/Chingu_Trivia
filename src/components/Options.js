@@ -14,12 +14,16 @@ function selectAnswer (selectedChoice){
 			{options.map((option, index)=>{
 				
 				return (			
-					<div className="optionItem" 
-					key={index}
-					onClick={()=>selectAnswer(option[0])}
-					> {`${option[0]}: ${option[1]}`} </div>		
+					<div 
+						className="optionItem" 
+						key={index}
+						onClick={()=>selectAnswer(option[0])}> 
+						
+						{`${option[0]}: ${option[1]}`} 
+					
+					</div>		
 				)
-				
+
 			})}
 		</div>
 	)
