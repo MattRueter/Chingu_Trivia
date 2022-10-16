@@ -1,11 +1,15 @@
 import React from 'react';
 
-export default function Nav (){
+
+export default function Nav ({user,correct,incorrect}){
+	
+	
 	return(
 		<nav id="navbar">
 			<h1>Chingu Trivia</h1>
-			<div>Correct: 0</div>
-			<div>Incorrect: 0</div>
+			<h2>{user.userName}</h2>
+			<div>Correct: {correct}</div>
+			<div>Incorrect: {incorrect}</div>
 		</nav>
 	)
 }
