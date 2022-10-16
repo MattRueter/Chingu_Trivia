@@ -7,8 +7,8 @@ import {users} from '../data/user.js';
 
 export default function App() {
   const [user, setUser] = useState(users[1])
-	const [correct, setCorrect] = useState(user.currentSession.correct);
-	const [incorrect, setIncorrect] = useState(user.currentSession.incorrect);
+	const [correct, setCorrect] = useState(user.correctResponses);
+	const [incorrect, setIncorrect] = useState(user.incorrectResponses);
 
   return (
     <div>
