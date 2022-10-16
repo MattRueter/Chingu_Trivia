@@ -9,10 +9,17 @@ button{
 }
 /*NAVBAR styles*/
 #navbar{
-	/*border:1px solid black;*/
+	display:flex;
+	justify-content:flex-start;
 	background-color:rgb(151, 199, 241);
 	border-radius:15px;
 	padding:1%;
+}
+.navWrapper{
+	display:flex;
+	flex-direction: column;
+	justify-content:center;
+	margin-left:5%;
 }
 /*CARD styles*/
 #container{
