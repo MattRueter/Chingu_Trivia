@@ -11,7 +11,8 @@ export default function Container (){
 	
 	const [questionNumber, setQuestionNumber] = useState(1)
 	const [question, setQuestion] = useState(questions[0].question)	
-	const [options, setOptions] = useState(Object.entries(questions[0].choices))	
+	const [options, setOptions] = useState(Object.entries(questions[0].choices))
+	const [answer, setAnswer]	= useState(questions[0].answer)	
 
 
 
@@ -27,6 +28,8 @@ export default function Container (){
 			setQuestionNumber(nextIndex+1);
 			setQuestion(questions[nextIndex].question);
 			setOptions(Object.entries(questions[nextIndex].choices))
+			setAnswer(questions[nextIndex].answer)
+			
 		}
 	};
 
@@ -34,7 +37,7 @@ export default function Container (){
 		<div id="container">
 			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
 			<Question question={question} />
-			<Options options={options}/>
+			<Options options={options} answer={answer}/>
 			<button onClick={handleClick}>NEXT</button>
 		</div>
 	)
