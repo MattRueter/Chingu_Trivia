@@ -2,11 +2,16 @@ import React from 'react';
 
 export default function Options ({options, answer}){
 
-function selectAnswer (selectedChoice){
+
+function selectAnswer (selectedChoice, key){
+	const currentOption = document.getElementById('optionsBox').children[key];
+		
 	if(selectedChoice === answer){		
 		console.log("correct!")
-	}else{
+		currentOption.style.backgroundColor='green';
+	}else{		
 		console.log("incorrect")
+		currentOption.style.backgroundColor='red';
 	}
 };
 	return (
@@ -17,7 +22,9 @@ function selectAnswer (selectedChoice){
 					<div 
 						className="optionItem" 
 						key={index}
-						onClick={()=>selectAnswer(option[0])}> 
+						onClick={()=>selectAnswer(option[0], index)}
+					
+						> 
 						
 						{`${option[0]}: ${option[1]}`} 
 					

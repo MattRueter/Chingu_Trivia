@@ -18,7 +18,7 @@ export default function Container (){
 
 	function handleClick (){
 		const index = questions.findIndex(item =>{
-			return item.question===question
+			return item.question === question
 		})
 
 		const nextIndex = index +1
@@ -31,8 +31,18 @@ export default function Container (){
 			setAnswer(questions[nextIndex].answer)
 			
 		}
+		
+		resetColor();
 	};
-
+//resetColor may be better defined elsewhere as a utility function.
+function resetColor(){
+	const optionsDOM = document.getElementById('optionsBox').children;
+	const children = optionsDOM.length;
+		
+	for(let i = 0; i<children; i++){
+		optionsDOM[i].style.backgroundColor ='white';
+	}
+};
 	return (
 		<div id="container">
 			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
