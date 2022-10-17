@@ -21,11 +21,11 @@ class User {
 	get incorrectResponses (){
 		return this.currentSession.incorrect;
 	}
-	set score (correctOrIncorrect){
+	updateScore (correctOrIncorrect){
 		let key = correctOrIncorrect
 		this.currentSession[key] += 1;
 	}
-	set currentQuestion (number){
+	updateCurrentQuestion (number){
 		this.currentSession.currentQuestion += number;	
 	}
 }

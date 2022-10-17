@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Options ({options, answer}){
+export default function Options ({options, answer, updateScore}){
 
 
 function selectAnswer (selectedChoice, key){
@@ -9,10 +9,11 @@ function selectAnswer (selectedChoice, key){
 	if(selectedChoice === answer){		
 		console.log("correct!")
 		currentOption.style.backgroundColor='green';
-		
+		updateScore("correct");
 	}else{		
 		console.log("incorrect")
 		currentOption.style.backgroundColor='red';
+		updateScore("incorrect");
 	}
 };
 	return (

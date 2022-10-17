@@ -5,7 +5,7 @@ import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
 
-export default function Container (){
+export default function Container ({updateScore}){
 	
 	let totalQuestions = questions.length;
 	
@@ -47,7 +47,7 @@ function resetColor(){
 		<div id="container">
 			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
 			<Question question={question} />
-			<Options options={options} answer={answer}/>
+			<Options options={options} answer={answer} updateScore={updateScore}/>
 			<button onClick={handleClick}>NEXT</button>
 		</div>
 	)
