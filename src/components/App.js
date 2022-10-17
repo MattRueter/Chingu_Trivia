@@ -6,12 +6,12 @@ import Container from './Container.js';
 import {users} from '../data/user.js';
 
 export default function App() {
+  
   const [user, setUser] = useState(users[1])
 	const [correct, setCorrect] = useState(user.correctResponses);
 	const [incorrect, setIncorrect] = useState(user.incorrectResponses);
 
   function updateScore(correctOrIncorrect){
-    console.log(`updating score.`)
     
     if(correctOrIncorrect==='correct'){
       user.updateScore("correct")
