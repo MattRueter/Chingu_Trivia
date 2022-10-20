@@ -3,24 +3,36 @@ body{
 }
 
 button{
-	width:25%;
-	height:70px;
+	width:4rem;
+	height:4rem;
 	margin-top:2%;
+	font-size:1rem;
 }
+
+
+
 /*NAVBAR styles*/
 #navbar{
 	display:flex;
-	justify-content:flex-start;
-	background-color:rgb(151, 199, 241);
-	border-radius:15px;
+	justify-content:space-evenly;
+	flex-direction:row;
+	align-items:center;
 	padding:1%;
+	height:30px;
+	border-radius:15px;
+	background-color:rgb(151, 199, 241);
 }
 .navWrapper{
+	width:25%;
 	display:flex;
-	flex-direction: column;
-	justify-content:center;
-	margin-left:5%;
+	flex-direction:row;
+	justify-content:space-between;
+	align-items:center;
 }
+
+
+
+
 /*CARD styles*/
 #container{
 	border:1px solid black;
@@ -29,8 +41,9 @@ button{
 	margin-left:22%;
 	margin-top:2%;
 	width:50%;
-	min-height: 550px;
-	max-height: 550px;
+	height:650px;
+	/*min-height: 650px;
+	max-height: 650px;*/
 	display:flex;
 	flex-direction:column;
 	align-items: center;
@@ -40,9 +53,11 @@ button{
 	max-height: 50px;
 }
 #optionsBox{
+	display:flex;
+	flex-direction:column;
 	min-width:75%;
-	min-height: 375px;
-	max-height: 375px;
+	min-height: 500px;
+	max-height: 500px;
 }
 .optionItem{
 	border:1px solid black;
@@ -52,4 +67,84 @@ button{
 }
 .optionItem:hover{
 	background-color:rgb(151, 199, 241);
+}
+
+
+
+/*MEDIA Queries*/
+
+/*widths*/
+/*-------------  < 900px  -----------*/
+@media screen and (max-width:900px){
+	.navWrapper{
+		width:50%;
+	}
+	h1,h2{
+		font-size:1rem
+	}
+}
+@media screen and (max-width: 900px){
+	#container{
+		justify-content:space-evenly;
+		width:95%;
+		margin:1%;
+	}
+}
+
+@media screen and (max-width: 900px){
+	#question{
+		font-size:100%;
+		
+	}
+}
+/*-------------  < 400px  -----------*/
+@media screen and (max-width: 400px){
+	#container{
+		justify-content:space-evenly;
+		width:95%;
+	
+		
+	}
+}
+@media screen and (max-width: 400px){
+	#optionsBox{
+		display:flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		min-height: 300px;
+		max-height: 300px;
+	}
+
+}
+@media screen and (max-width:300px){
+	.navWrapper >*{
+		margin:3%;
+		font-size:small;
+	}
+	h1,h2{
+		font-size:xx-small;
+	}
+	#container{
+		height:100vh;
+	}
+
+}
+
+
+/*Height*/
+/*-------------  < 700px  -----------*/
+@media screen and (max-height: 700px){
+	#container{
+		min-height:500px;
+		max-height:500px;
+		padding:4%;
+		justify-content:space-evenly;
+	}
+}
+@media screen and (max-height: 700px){
+	#optionsBox{
+		min-height:400px;
+		max-height:400px;
+
+	}
 }
