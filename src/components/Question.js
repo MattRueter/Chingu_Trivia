@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-export default function Question({question}) {
+export default function Question({currentQuestion}) {
   
   return (
-   <h2 id="question">{question}</h2>
+   <h2 id="question">{currentQuestion}</h2>
   );
 }
