@@ -1,20 +1,37 @@
-import React, {useState} from 'react';
-import {questions} from '../data/questions.js';
+import React, {useState, useEffect} from 'react';
+//import {questions} from '../data/questions.js';
 import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
 
 export default function Container ({updateScore}){
 	
-	let totalQuestions = questions.length;
-	const [questionNumber, setQuestionNumber] = useState(1)
-	const [question, setQuestion] = useState(questions[0].question)	
-	const [options, setOptions] = useState(Object.entries(questions[0].choices))
-	const [answer, setAnswer]	= useState(questions[0].answer)	
+	const [totalQuestions, setTotalQuestions] =useState(0)
+	const [questionSet,setQuestionSet] = useState(null)
+	const [questionNumber, setQuestionNumber] = useState(null)
+	const [question, setQuestion] = useState(null)	
+	const [options, setOptions] = useState([])
+	const [answer, setAnswer]	= useState(null)	
+
+	useEffect(() =>{
+	
+	fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
+     .then((response) =>response.json())
+     .then((data) => setQuestionSet(data))
+	 .then(()=>{
+		setTotalQuestions(questionSet.length)
+		setQuestionNumber(questionSet[0].id)
+		setQuestion(questionSet[0].question)
+		setOptions(Object.entries(questionSet[0].choices))
+		setAnswer(questionSet[0].answer)
+		console.log(questionSet)
+	 })
+
+	},[]);
 
 	function nextQuestion (){
 		
-		const index = questions.findIndex(item =>{
+		const index = questionSet.findIndex(item =>{
 			return item.question === question
 		})
 
@@ -23,9 +40,9 @@ export default function Container ({updateScore}){
 
 		}else{
 			setQuestionNumber(nextIndex+1);
-			setQuestion(questions[nextIndex].question);
-			setOptions(Object.entries(questions[nextIndex].choices))
-			setAnswer(questions[nextIndex].answer)			
+			setQuestion(questionSet[nextIndex].question);
+			setOptions(Object.entries(questionSet[nextIndex].choices))
+			setAnswer(questionSet[nextIndex].answer)			
 		}
 		
 		resetColor();
