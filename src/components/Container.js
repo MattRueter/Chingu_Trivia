@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-//import {questions} from '../data/questions.js';
+
 import {resetColor} from '../utility_functions/reset_color.js';
 import Counter from './Counter.js';
 import Question from './Question.js';
