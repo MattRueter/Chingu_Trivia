@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 //import {questions} from '../data/questions.js';
+import {resetColor} from '../utility_functions/reset_color.js';
 import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
@@ -29,8 +30,7 @@ export default function Container ({updateScore}){
 		}
 	},[questionSet])
 
-	function nextQuestion (){
-		
+	function nextQuestion (){		
 		const index = questionSet.findIndex(item =>{
 			return item.question === currentQuestion
 		})
@@ -47,15 +47,7 @@ export default function Container ({updateScore}){
 		
 		resetColor();
 	};
-//resetColor may be better defined elsewhere as a utility function.
-function resetColor(){
-	const optionsDOM = document.getElementById('optionsBox').children;
-	const children = optionsDOM.length;
-		
-	for(let i = 0; i<children; i++){
-		optionsDOM[i].style.backgroundColor ='white';
-	}
-};
+
 	return (
 		<div id="container">
 			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
