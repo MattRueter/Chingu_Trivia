@@ -34,11 +34,9 @@ export default function Container ({updateScore}){
 		}
 	},[questionSet])
 
-	useEffect(() =>{
-		
+	useEffect(() =>{		
 		const nextBtn = document.getElementById('nextBtn');
 		nextBtn.textContent === 'CHECK' ? nextBtn.textContent='NEXT' : nextBtn.textContent='CHECK';
-
 	},[answerEvaluated])
 
 	function updateSelected(selectedOption){
