@@ -16,6 +16,18 @@ export default function Options ({options, answer, updateScore}){
 		}
 	};
 
+	function chooseOption (key) {
+		const allOptions = document.getElementById('optionsBox').children;
+			for(let i=0; i < allOptions.length; i++){
+				if(allOptions[i].classList[1]==='selectedOption'){
+					allOptions[i].classList.remove('selectedOption');
+				}
+			}
+		
+		const selectedOption = document.getElementById('optionsBox').children[key];
+			selectedOption.classList.add('selectedOption');
+	};
+
 	return (
 		<div id="optionsBox">
 			{options.map((option, index)=>{
@@ -24,7 +36,7 @@ export default function Options ({options, answer, updateScore}){
 					<div 
 						className="optionItem" 
 						key={index}
-						onClick={()=>selectAnswer(option[0], index)}					
+						onClick={()=>chooseOption(index)}					
 						> 						
 						{`${option[0]}: ${option[1]}`} 					
 					</div>		
