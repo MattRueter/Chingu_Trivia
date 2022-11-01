@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import {resetColor} from '../utility_functions/reset_color.js';
+import {resetHighlight} from '../utility_functions/reset_highlight.js';
 import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
@@ -61,6 +62,7 @@ export default function Container ({updateScore}){
 			}
 			
 			resetColor();
+			resetHighlight();
 			setAnswerEvaluated(false);		
 	};
 
@@ -93,10 +95,3 @@ export default function Container ({updateScore}){
 		</div>
 	)
 }
-
-/*
-function toggleChecked(){
-	const nextBtn = document.getElementById('nextBtn');
-		nextBtn.textContent === 'CHECK' ? nextBtn.textContent='NEXT' : nextBtn.textContent='CHECK'
-}
-*/

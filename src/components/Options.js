@@ -1,11 +1,12 @@
 import React from 'react';
+import {resetHighlight} from '../utility_functions/reset_highlight.js';
 
 export default function Options ({options, answer, updateScore, updateSelected, answerEvaluated}){
 
 	function selectOption (key) {
 		if(answerEvaluated === false){
 
-			highlightReset()
+			resetHighlight();
 
 			const selectedOption = document.getElementById('optionsBox').children[key];
 				selectedOption.classList.add('selectedOption');
@@ -29,12 +30,4 @@ export default function Options ({options, answer, updateScore, updateSelected, 
 			})}
 		</div>
 	)
-}
-function highlightReset (){
-	const allOptions = document.getElementById('optionsBox').children;
-				for(let i=0; i < allOptions.length; i++){
-					if(allOptions[i].classList[1]==='selectedOption'){
-						allOptions[i].classList.remove('selectedOption');
-					}
-				}
 }
