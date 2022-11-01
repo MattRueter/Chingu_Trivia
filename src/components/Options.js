@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Options ({options, answer, updateScore}){
-
+/*
 	function selectAnswer (selectedChoice, key){
 		const currentOption = document.getElementById('optionsBox').children[key];
 			
@@ -15,8 +15,8 @@ export default function Options ({options, answer, updateScore}){
 			updateScore("incorrect");
 		}
 	};
-
-	function chooseOption (key) {
+*/
+	function selectOption (key) {
 		const allOptions = document.getElementById('optionsBox').children;
 			for(let i=0; i < allOptions.length; i++){
 				if(allOptions[i].classList[1]==='selectedOption'){
@@ -36,7 +36,7 @@ export default function Options ({options, answer, updateScore}){
 					<div 
 						className="optionItem" 
 						key={index}
-						onClick={()=>chooseOption(index)}					
+						onClick={()=>selectOption(index)}					
 						> 						
 						{`${option[0]}: ${option[1]}`} 					
 					</div>		
