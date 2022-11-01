@@ -5,6 +5,9 @@ import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
 
+//global
+
+
 export default function Container ({updateScore}){
 	
 	const [questionSet,setQuestionSet] = useState(null)
@@ -15,6 +18,7 @@ export default function Container ({updateScore}){
 	const [answer, setAnswer]	= useState(null)	
 
 	const [selected, setSelected] = useState(null);
+	const [answerEvaluated, setAnswerEvaluated] = useState(false);
 
 	useEffect(() =>{
 		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
@@ -34,10 +38,11 @@ export default function Container ({updateScore}){
 
 	function updateSelected(selectedOption){
 		setSelected(selectedOption);
-		console.log(selected)
 	}
 
 	function nextQuestion (){		
+		checkAnswer()
+		/*
 		const index = questionSet.findIndex(item =>{
 			return item.question === currentQuestion
 		})
@@ -53,14 +58,30 @@ export default function Container ({updateScore}){
 		}
 		
 		resetColor();
+		*/
 	};
 
+
+	function checkAnswer (){
+			
+		if(selected.textContent[0] === answer){		
+			selected.style.backgroundColor='green';
+			updateScore("correct");
+		}else{		
+			selected.style.backgroundColor='red';
+			updateScore("incorrect");
+		}
+		setAnswerEvaluated(true);
+	};
+	
 	return (
 		<div id="container">
 			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
 			<Question currentQuestion={currentQuestion} />
-			<Options options={options} answer={answer} updateScore={updateScore} updateSelected={updateSelected}/>
-			<button onClick={nextQuestion}>NEXT</button>
+			<Options options={options} answer={answer} updateScore={updateScore} updateSelected={updateSelected} answerEvaluated={answerEvaluated}/>
+			<button onClick={nextQuestion}>CHECK</button>
 		</div>
 	)
 }
+
+

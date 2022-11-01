@@ -1,32 +1,21 @@
 import React from 'react';
 
-export default function Options ({options, answer, updateScore, updateSelected}){
-/*
-	function checkAnswer (selectedChoice, key){
-		const currentOption = document.getElementById('optionsBox').children[key];
-			
-		if(selectedChoice === answer){		
-			console.log("correct!")
-			currentOption.style.backgroundColor='green';
-			updateScore("correct");
-		}else{		
-			console.log("incorrect")
-			currentOption.style.backgroundColor='red';
-			updateScore("incorrect");
-		}
-	};
-*/
+export default function Options ({options, answer, updateScore, updateSelected, answerEvaluated}){
+
 	function selectOption (key) {
-		const allOptions = document.getElementById('optionsBox').children;
-			for(let i=0; i < allOptions.length; i++){
-				if(allOptions[i].classList[1]==='selectedOption'){
-					allOptions[i].classList.remove('selectedOption');
+		if(answerEvaluated === false){
+
+			const allOptions = document.getElementById('optionsBox').children;
+				for(let i=0; i < allOptions.length; i++){
+					if(allOptions[i].classList[1]==='selectedOption'){
+						allOptions[i].classList.remove('selectedOption');
+					}
 				}
-			}
-		
-		const selectedOption = document.getElementById('optionsBox').children[key];
-			selectedOption.classList.add('selectedOption');
-			updateSelected(selectedOption);
+			
+			const selectedOption = document.getElementById('optionsBox').children[key];
+				selectedOption.classList.add('selectedOption');
+				updateSelected(selectedOption);
+		}
 	};
 
 	return (
