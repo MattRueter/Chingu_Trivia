@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Options ({options, answer, updateScore}){
+export default function Options ({options, answer, updateScore, updateSelected}){
 /*
-	function selectAnswer (selectedChoice, key){
+	function checkAnswer (selectedChoice, key){
 		const currentOption = document.getElementById('optionsBox').children[key];
 			
 		if(selectedChoice === answer){		
@@ -26,6 +26,7 @@ export default function Options ({options, answer, updateScore}){
 		
 		const selectedOption = document.getElementById('optionsBox').children[key];
 			selectedOption.classList.add('selectedOption');
+			updateSelected(selectedOption);
 	};
 
 	return (

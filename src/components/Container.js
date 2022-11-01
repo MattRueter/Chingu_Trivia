@@ -14,6 +14,8 @@ export default function Container ({updateScore}){
 	const [options, setOptions] = useState([])
 	const [answer, setAnswer]	= useState(null)	
 
+	const [selected, setSelected] = useState(null);
+
 	useEffect(() =>{
 		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
 		 .then((response) =>response.json())
@@ -29,6 +31,11 @@ export default function Container ({updateScore}){
 			setAnswer(questionSet[0].answer)
 		}
 	},[questionSet])
+
+	function updateSelected(selectedOption){
+		setSelected(selectedOption);
+		console.log(selected)
+	}
 
 	function nextQuestion (){		
 		const index = questionSet.findIndex(item =>{
@@ -52,7 +59,7 @@ export default function Container ({updateScore}){
 		<div id="container">
 			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
 			<Question currentQuestion={currentQuestion} />
-			<Options options={options} answer={answer} updateScore={updateScore}/>
+			<Options options={options} answer={answer} updateScore={updateScore} updateSelected={updateSelected}/>
 			<button onClick={nextQuestion}>NEXT</button>
 		</div>
 	)
