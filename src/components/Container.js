@@ -5,9 +5,6 @@ import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
 
-//global
-
-
 export default function Container ({updateScore}){
 	
 	const [questionSet,setQuestionSet] = useState(null)
@@ -36,29 +33,35 @@ export default function Container ({updateScore}){
 		}
 	},[questionSet])
 
+	useEffect(() =>{
+		
+		const nextBtn = document.getElementById('nextBtn');
+		nextBtn.textContent === 'CHECK' ? nextBtn.textContent='NEXT' : nextBtn.textContent='CHECK';
+
+	},[answerEvaluated])
+
 	function updateSelected(selectedOption){
 		setSelected(selectedOption);
 	}
 
 	function nextQuestion (){		
-		checkAnswer()
-		/*
-		const index = questionSet.findIndex(item =>{
-			return item.question === currentQuestion
-		})
-
-		const nextIndex = index +1
-		if(nextIndex +1 > totalQuestions){
-
-		}else{
-			setQuestionNumber(nextIndex+1);
-			setCurrentQuestion(questionSet[nextIndex].question);
-			setOptions(Object.entries(questionSet[nextIndex].choices))
-			setAnswer(questionSet[nextIndex].answer)			
-		}
-		
-		resetColor();
-		*/
+				
+			const index = questionSet.findIndex(item =>{
+				return item.question === currentQuestion
+			})
+	
+			const nextIndex = index +1
+			if(nextIndex +1 > totalQuestions){
+	
+			}else{
+				setQuestionNumber(nextIndex+1);
+				setCurrentQuestion(questionSet[nextIndex].question);
+				setOptions(Object.entries(questionSet[nextIndex].choices))
+				setAnswer(questionSet[nextIndex].answer)			
+			}
+			
+			resetColor();
+			setAnswerEvaluated(false);		
 	};
 
 
@@ -74,14 +77,26 @@ export default function Container ({updateScore}){
 		setAnswerEvaluated(true);
 	};
 	
+	function handleClick(){
+		if (answerEvaluated === true){
+			nextQuestion()
+		}else{
+			checkAnswer()
+		}
+	}
 	return (
 		<div id="container">
 			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
 			<Question currentQuestion={currentQuestion} />
 			<Options options={options} answer={answer} updateScore={updateScore} updateSelected={updateSelected} answerEvaluated={answerEvaluated}/>
-			<button onClick={nextQuestion}>CHECK</button>
+			<button id='nextBtn' onClick={handleClick}>CHECK</button>
 		</div>
 	)
 }
 
-
+/*
+function toggleChecked(){
+	const nextBtn = document.getElementById('nextBtn');
+		nextBtn.textContent === 'CHECK' ? nextBtn.textContent='NEXT' : nextBtn.textContent='CHECK'
+}
+*/

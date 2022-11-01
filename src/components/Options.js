@@ -5,13 +5,8 @@ export default function Options ({options, answer, updateScore, updateSelected, 
 	function selectOption (key) {
 		if(answerEvaluated === false){
 
-			const allOptions = document.getElementById('optionsBox').children;
-				for(let i=0; i < allOptions.length; i++){
-					if(allOptions[i].classList[1]==='selectedOption'){
-						allOptions[i].classList.remove('selectedOption');
-					}
-				}
-			
+			highlightReset()
+
 			const selectedOption = document.getElementById('optionsBox').children[key];
 				selectedOption.classList.add('selectedOption');
 				updateSelected(selectedOption);
@@ -34,4 +29,12 @@ export default function Options ({options, answer, updateScore, updateSelected, 
 			})}
 		</div>
 	)
+}
+function highlightReset (){
+	const allOptions = document.getElementById('optionsBox').children;
+				for(let i=0; i < allOptions.length; i++){
+					if(allOptions[i].classList[1]==='selectedOption'){
+						allOptions[i].classList.remove('selectedOption');
+					}
+				}
 }
