@@ -6,6 +6,9 @@ import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
 
+//global
+let incorrectResponses =[];
+
 export default function Container ({updateScore}){
 	
 	const [questionSet,setQuestionSet] = useState(null)
@@ -73,6 +76,7 @@ export default function Container ({updateScore}){
 		}else{		
 			selected.style.backgroundColor='red';
 			updateScore("incorrect");
+			createIncorrectArray(questionSet[questionNumber])
 		}
 		setAnswerEvaluated(true);
 	};
@@ -84,6 +88,12 @@ export default function Container ({updateScore}){
 			checkAnswer()
 		}
 	}
+
+	function createIncorrectArray(question){
+		incorrectResponses.push(question)
+		console.log(incorrectResponses)		
+	};
+	
 	return (
 		<div id="container">
 			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
