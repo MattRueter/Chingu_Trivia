@@ -99,10 +99,23 @@ export default function Container ({updateScore, resetScore}){
 	};
 
 	function displayEndgame (){
-		alert("you've got to the end. Now try to correct your incorrect responses.")
-		resetScore();
-		setQuestionSet(incorrectResponses);
-		incorrectResponses = [];
+	
+		if(answeredAllCorrectly()){
+			alert("You've got them all correct.")
+		}else{
+
+			alert("you've got to the end. Now try to correct your incorrect responses.")
+			resetScore();
+			setQuestionSet(incorrectResponses);
+			incorrectResponses = [];
+		}
+	}
+	function answeredAllCorrectly(){
+		if(incorrectResponses.length === 0 ){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	return (
