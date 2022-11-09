@@ -22,10 +22,16 @@ export default function App() {
     }
   }
 
+  function resetScore(){
+    user.resetScore();
+    setCorrect(user.correctResponses);
+    setIncorrect(user.incorrectResponses);
+  }
+
   return (
     <div>
       <Nav user={user} correct={correct} incorrect={incorrect}  />
-      <Container updateScore={updateScore}/>
+      <Container updateScore={updateScore} resetScore={resetScore}/>
     </div>
   );
 }

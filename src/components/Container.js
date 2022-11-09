@@ -9,7 +9,7 @@ import {testQuestions} from '../data/user.js';
 //global
 let incorrectResponses =[];
 
-export default function Container ({updateScore}){
+export default function Container ({updateScore, resetScore}){
 	
 	const [questionSet,setQuestionSet] = useState(null)
 	const [totalQuestions, setTotalQuestions] =useState(null)
@@ -100,6 +100,7 @@ export default function Container ({updateScore}){
 
 	function displayEndgame (){
 		alert("you've got to the end. Now try to correct your incorrect responses.")
+		resetScore();
 		setQuestionSet(incorrectResponses);
 		incorrectResponses = [];
 	}
