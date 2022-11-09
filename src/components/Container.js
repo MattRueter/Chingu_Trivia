@@ -5,7 +5,7 @@ import {resetHighlight} from '../utility_functions/reset_highlight.js';
 import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
-
+import {testQuestions} from '../data/user.js';
 //global
 let incorrectResponses =[];
 
@@ -22,15 +22,18 @@ export default function Container ({updateScore}){
 	const [answerEvaluated, setAnswerEvaluated] = useState(false);
 
 	useEffect(() =>{
+		/*
 		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
 		 .then((response) =>response.json())
 		 .then((data) =>setQuestionSet(data)) 
+		 */
+		setQuestionSet(testQuestions);
 	},[]);
 
 	useEffect(() =>{
 		if(questionSet !== null){
 			setTotalQuestions(questionSet.length)
-			setQuestionNumber(questionSet[0].id)
+			setQuestionNumber(1)
 			setCurrentQuestion(questionSet[0].question)
 			setOptions(Object.entries(questionSet[0].choices))
 			setAnswer(questionSet[0].answer)
@@ -54,7 +57,7 @@ export default function Container ({updateScore}){
 	
 			const nextIndex = index +1
 			if(nextIndex +1 > totalQuestions){
-	
+				displayEndgame ();
 			}else{
 				setQuestionNumber(nextIndex+1);
 				setCurrentQuestion(questionSet[nextIndex].question);
@@ -69,14 +72,16 @@ export default function Container ({updateScore}){
 
 
 	function checkAnswer (){
-			
+		const index = questionSet.findIndex(item =>{
+			return item.question === currentQuestion
+		})
 		if(selected.textContent[0] === answer){		
 			selected.style.backgroundColor='green';
 			updateScore("correct");
 		}else{		
 			selected.style.backgroundColor='red';
 			updateScore("incorrect");
-			createIncorrectArray(questionSet[questionNumber])
+			createIncorrectArray(questionSet[index])
 		}
 		setAnswerEvaluated(true);
 	};
@@ -91,9 +96,14 @@ export default function Container ({updateScore}){
 
 	function createIncorrectArray(question){
 		incorrectResponses.push(question)
-		console.log(incorrectResponses)		
 	};
-	
+
+	function displayEndgame (){
+		alert("you've got to the end. Now try to correct your incorrect responses.")
+		setQuestionSet(incorrectResponses);
+		incorrectResponses = [];
+	}
+
 	return (
 		<div id="container">
 			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
