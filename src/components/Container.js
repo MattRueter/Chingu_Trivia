@@ -21,6 +21,8 @@ export default function Container ({updateScore, resetScore}){
 	const [selected, setSelected] = useState(null);
 	const [answerEvaluated, setAnswerEvaluated] = useState(false);
 
+	const [endGame, setEndGame] = useState(false);
+
 	useEffect(() =>{
 		/*
 		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
@@ -31,7 +33,7 @@ export default function Container ({updateScore, resetScore}){
 	},[]);
 
 	useEffect(() =>{
-		if(questionSet !== null){
+		if(questionSet !== null && endGame==false){
 			setTotalQuestions(questionSet.length)
 			setQuestionNumber(1)
 			setCurrentQuestion(questionSet[0].question)
@@ -40,9 +42,11 @@ export default function Container ({updateScore, resetScore}){
 		}
 	},[questionSet])
 
-	useEffect(() =>{		
-		const nextBtn = document.getElementById('nextBtn');
-		nextBtn.textContent === 'CHECK' ? nextBtn.textContent='NEXT' : nextBtn.textContent='CHECK';
+	useEffect(() =>{	
+		if(endGame===false){
+			const nextBtn = document.getElementById('nextBtn');
+			nextBtn.textContent === 'CHECK' ? nextBtn.textContent='NEXT' : nextBtn.textContent='CHECK';
+		}	
 	},[answerEvaluated])
 
 	function updateSelected(selectedOption){
@@ -101,7 +105,8 @@ export default function Container ({updateScore, resetScore}){
 	function displayEndgame (){
 	
 		if(answeredAllCorrectly()){
-			alert("You've got them all correct.")
+			//working here. Alert will need to be replaced with re-populating card with message.
+			setEndGame(true);
 		}else{
 
 			alert("you've got to the end. Now try to correct your incorrect responses.")
@@ -118,12 +123,23 @@ export default function Container ({updateScore, resetScore}){
 		}
 	}
 
-	return (
-		<div id="container">
-			<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
-			<Question currentQuestion={currentQuestion} />
-			<Options options={options} answer={answer} updateScore={updateScore} updateSelected={updateSelected} answerEvaluated={answerEvaluated}/>
-			<button id='nextBtn' onClick={handleClick}>CHECK</button>
-		</div>
-	)
+	if(endGame===false){
+		return (
+			<div id="container">
+				<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
+				<Question currentQuestion={currentQuestion} />
+				<Options options={options} answer={answer} updateScore={updateScore} updateSelected={updateSelected} answerEvaluated={answerEvaluated}/>
+				<button id='nextBtn' onClick={handleClick}>CHECK</button>
+			</div>
+		)
+
+	}else if (endGame === true){
+		return(
+			<div id="container">
+				<p>THE END</p>
+				<p>Congrats! You've got 100%</p>
+				<button>CHECK</button>
+			</div>
+		)
+	}
 }
