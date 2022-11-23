@@ -136,9 +136,12 @@ export default function Container ({updateScore, resetScore}){
 	}else if (endGame === true){
 		return(
 			<div id="container">
-				<p>THE END</p>
-				<p>Congrats! You've got 100%</p>
-				<button>CHECK</button>
+				<div id="message">
+					<p>THE END</p>
+					<p>Congrats! You've got 100%</p>
+					<button>Restart</button>
+				</div>
+
 			</div>
 		)
 	}
