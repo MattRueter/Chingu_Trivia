@@ -96,6 +96,14 @@ export default function Container ({updateScore, resetScore}){
 		}
 	}
 
+	function toggleTryAgain (){
+		if (tryAgain === true){
+			setTryAgain(false);
+		}else{
+			setTryAgain(true);
+		}
+	};
+
 	if(endGame === false && tryAgain === false){
 		return (
 			<div id="container">
@@ -113,7 +121,7 @@ export default function Container ({updateScore, resetScore}){
 				<div id="message">
 					<p>Try Again</p>
 					<p>Keep trying until you get 100%</p>
-					<button>Continue</button>					
+					<button onClick={toggleTryAgain}>Continue</button>					
 				</div>
 
 			</div>
