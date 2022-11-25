@@ -5,6 +5,7 @@ import {resetHighlight} from '../utility_functions/reset_highlight.js';
 import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
+import Congrats from './Congrats.js';
 import {testQuestions} from '../data/user.js';
 //global
 let incorrectResponses =[];
@@ -135,14 +136,7 @@ export default function Container ({updateScore, resetScore}){
 
 	}else if (endGame === true){
 		return(
-			<div id="container">
-				<div id="message">
-					<p>THE END</p>
-					<p>Congrats! You've got 100%</p>
-					<button>Restart</button>
-				</div>
-
-			</div>
+			<Congrats />
 		)
 	}
 }
