@@ -103,6 +103,14 @@ export default function Container ({updateScore, resetScore}){
 			setTryAgain(true);
 		}
 	};
+	function toggleEndGame (){
+		if (endGame === true){
+			setEndGame(false);
+			
+		}else{
+			setEndGame(true);
+		}
+	}
 
 	if(endGame === false && tryAgain === false){
 		return (
@@ -123,7 +131,7 @@ export default function Container ({updateScore, resetScore}){
 	}
 	else if (endGame === true){
 		return(
-			<Message gameType="Congrats!" msg="You've got 100%!"  btnMsg="Continue"  />
+			<Message gameType="Congrats!" msg="You've got 100%!"  btnMsg="Continue" toggle={toggleEndGame} />
 		)
 	}
 }
