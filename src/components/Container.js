@@ -5,7 +5,7 @@ import {resetHighlight} from '../utility_functions/reset_highlight.js';
 import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
-import Congrats from './Congrats.js';
+import Message from './Message.js';
 import {testQuestions} from '../data/user.js';
 //global
 let incorrectResponses =[];
@@ -115,21 +115,15 @@ export default function Container ({updateScore, resetScore}){
 		)
 
 	}else if(tryAgain === true){
+	
 		return(
+			<Message gameType="Try Again" msg="Keep trying until you get 100%"  btnMsg="Continue" toggle={toggleTryAgain} />
 			
-			<div id="container">
-				<div id="message">
-					<p>Try Again</p>
-					<p>Keep trying until you get 100%</p>
-					<button onClick={toggleTryAgain}>Continue</button>					
-				</div>
-
-			</div>
 		)
 	}
 	else if (endGame === true){
 		return(
-			<Congrats />
+			<Message gameType="Congrats!" msg="You've got 100%!"  btnMsg="Continue"  />
 		)
 	}
 }
