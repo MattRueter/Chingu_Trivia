@@ -16,6 +16,7 @@ export default function Container ({updateScore, resetScore}){
 	const [index, setIndex] = useState(0);
 	const [selected, setSelected] = useState(null);
 	const [answerEvaluated, setAnswerEvaluated] = useState(false);
+	const [tryAgain, setTryAgain] = useState(false);
 	const [endGame, setEndGame] = useState(false);
 
 //	useEffect(() =>{		
@@ -25,7 +26,7 @@ export default function Container ({updateScore, resetScore}){
 //	},[]);
 
 	useEffect(() =>{	
-		if(endGame===false){
+		if(endGame===false && tryAgain === false){
 			const nextBtn = document.getElementById('nextBtn');
 			nextBtn.textContent === 'CHECK' ? nextBtn.textContent='NEXT' : nextBtn.textContent='CHECK';
 		}	
@@ -76,9 +77,10 @@ export default function Container ({updateScore, resetScore}){
 	function displayEndgame (){
 	
 		if(answeredAllCorrectly()){
+			setTryAgain(false)
 			setEndGame(true);
 		}else{
-			alert("you've got to the end. Now try to correct your incorrect responses.")
+			setTryAgain(true)			
 			resetScore();
 			setIndex(0);
 			setQuestionSet(incorrectResponses);
@@ -94,7 +96,7 @@ export default function Container ({updateScore, resetScore}){
 		}
 	}
 
-	if(endGame===false){
+	if(endGame === false && tryAgain === false){
 		return (
 			<div id="container">
 				<Counter questionNumber={index + 1} totalQuestions={questionSet.length} />
@@ -104,7 +106,20 @@ export default function Container ({updateScore, resetScore}){
 			</div>
 		)
 
-	}else if (endGame === true){
+	}else if(tryAgain === true){
+		return(
+			
+			<div id="container">
+				<div id="message">
+					<p>Try Again</p>
+					<p>Keep trying until you get 100%</p>
+					<button>Continue</button>					
+				</div>
+
+			</div>
+		)
+	}
+	else if (endGame === true){
 		return(
 			<Congrats />
 		)
