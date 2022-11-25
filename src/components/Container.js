@@ -12,36 +12,17 @@ let incorrectResponses =[];
 
 export default function Container ({updateScore, resetScore}){
 	
-	const [questionSet,setQuestionSet] = useState(null)
-	const [totalQuestions, setTotalQuestions] =useState(null)
-	const [questionNumber, setQuestionNumber] = useState(null)
-	const [currentQuestion, setCurrentQuestion] = useState(null)	
-	const [options, setOptions] = useState([])
-	const [answer, setAnswer]	= useState(null)	
-
+	const [questionSet,setQuestionSet] = useState(testQuestions)
+	const [index, setIndex] = useState(0);
 	const [selected, setSelected] = useState(null);
 	const [answerEvaluated, setAnswerEvaluated] = useState(false);
-
 	const [endGame, setEndGame] = useState(false);
 
-	useEffect(() =>{
-		/*
-		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
-		 .then((response) =>response.json())
-		 .then((data) =>setQuestionSet(data)) 
-		 */
-		setQuestionSet(testQuestions);
-	},[]);
-
-	useEffect(() =>{
-		if(questionSet !== null && endGame==false){
-			setTotalQuestions(questionSet.length)
-			setQuestionNumber(1)
-			setCurrentQuestion(questionSet[0].question)
-			setOptions(Object.entries(questionSet[0].choices))
-			setAnswer(questionSet[0].answer)
-		}
-	},[questionSet])
+//	useEffect(() =>{		
+//		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
+//		 .then((response) =>response.json())
+//		 .then((data) =>setQuestionSet(data)) 		 
+//	},[]);
 
 	useEffect(() =>{	
 		if(endGame===false){
@@ -55,21 +36,12 @@ export default function Container ({updateScore, resetScore}){
 	}
 
 	function nextQuestion (){		
-				
-			const index = questionSet.findIndex(item =>{
-				return item.question === currentQuestion
-			})
-	
-			const nextIndex = index +1
-			if(nextIndex +1 > totalQuestions){
+
+			if(index +2 > questionSet.length){
 				displayEndgame ();
 			}else{
-				setQuestionNumber(nextIndex+1);
-				setCurrentQuestion(questionSet[nextIndex].question);
-				setOptions(Object.entries(questionSet[nextIndex].choices))
-				setAnswer(questionSet[nextIndex].answer)			
-			}
-			
+				setIndex(index + 1);			
+			}			
 			resetColor();
 			resetHighlight();
 			setAnswerEvaluated(false);		
@@ -77,10 +49,8 @@ export default function Container ({updateScore, resetScore}){
 
 
 	function checkAnswer (){
-		const index = questionSet.findIndex(item =>{
-			return item.question === currentQuestion
-		})
-		if(selected.textContent[0] === answer){		
+	
+		if(selected.textContent[0] === questionSet[index].answer){		
 			selected.style.backgroundColor='green';
 			updateScore("correct");
 		}else{		
@@ -106,16 +76,16 @@ export default function Container ({updateScore, resetScore}){
 	function displayEndgame (){
 	
 		if(answeredAllCorrectly()){
-			//working here. Alert will need to be replaced with re-populating card with message.
 			setEndGame(true);
 		}else{
-
 			alert("you've got to the end. Now try to correct your incorrect responses.")
 			resetScore();
+			setIndex(0);
 			setQuestionSet(incorrectResponses);
 			incorrectResponses = [];
 		}
 	}
+
 	function answeredAllCorrectly(){
 		if(incorrectResponses.length === 0 ){
 			return true;
@@ -127,9 +97,9 @@ export default function Container ({updateScore, resetScore}){
 	if(endGame===false){
 		return (
 			<div id="container">
-				<Counter questionNumber={questionNumber} totalQuestions={totalQuestions} />
-				<Question currentQuestion={currentQuestion} />
-				<Options options={options} answer={answer} updateScore={updateScore} updateSelected={updateSelected} answerEvaluated={answerEvaluated}/>
+				<Counter questionNumber={index + 1} totalQuestions={questionSet.length} />
+				<Question currentQuestion={questionSet[index].question} />
+				<Options options={Object.entries(questionSet[index].choices)} answer={questionSet[index].answer} updateScore={updateScore} updateSelected={updateSelected} answerEvaluated={answerEvaluated}/>
 				<button id='nextBtn' onClick={handleClick}>CHECK</button>
 			</div>
 		)
