@@ -13,7 +13,6 @@ export default function Container ({updateScore, resetScore}){
 	
 	const [questionSet,setQuestionSet] = useState(testQuestions)
 	const [index, setIndex] = useState(0);
-
 	const [selected, setSelected] = useState(null);
 	const [answerEvaluated, setAnswerEvaluated] = useState(false);
 	const [endGame, setEndGame] = useState(false);
@@ -22,14 +21,7 @@ export default function Container ({updateScore, resetScore}){
 //		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
 //		 .then((response) =>response.json())
 //		 .then((data) =>setQuestionSet(data)) 		 
-//		//setQuestionSet(testQuestions);
 //	},[]);
-
-	useEffect(() =>{
-		if(questionSet !== null && endGame==false){
-			setIndex(0);			
-		}
-	},[questionSet])
 
 	useEffect(() =>{	
 		if(endGame===false){
@@ -85,13 +77,14 @@ export default function Container ({updateScore, resetScore}){
 		if(answeredAllCorrectly()){
 			setEndGame(true);
 		}else{
-
 			alert("you've got to the end. Now try to correct your incorrect responses.")
 			resetScore();
+			setIndex(0);
 			setQuestionSet(incorrectResponses);
 			incorrectResponses = [];
 		}
 	}
+
 	function answeredAllCorrectly(){
 		if(incorrectResponses.length === 0 ){
 			return true;
