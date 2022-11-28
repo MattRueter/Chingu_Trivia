@@ -24,7 +24,7 @@ export default function App() {
   return (
     <div>
       <Nav  correct={correct} incorrect={incorrect} />
-      <Container updateScore={updateScore} resetScore={resetScore}/>
+      <Container updateScore={updateScore} resetScore={resetScore} correct={correct} incorrect={incorrect}/>
     </div>
   );
 }

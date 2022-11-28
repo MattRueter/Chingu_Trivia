@@ -7,12 +7,11 @@ import Options from './Options.js';
 import Message from './Message.js';
 import {testQuestions} from '../data/user.js';
 
-
-//***** Container is the Controlling container for the question card and *********************
-//***** manages state of everything not in the NavBar.*****************************************
-export default function Container ({updateScore, resetScore}){
+//--------------------------------------------------------------------------------------------
+//***** Container controls state for all components within the question card *****************
+//--------------------------------------------------------------------------------------------
+export default function Container ({updateScore, resetScore, correct, incorrect}){
 	const [questionMaster, setQuestionMaster]= useState(testQuestions);
-
 	const [questionSet,setQuestionSet] = useState(testQuestions)
 	const [incorrectResponses, setIncorrectResponses] = useState([])
 	const [index, setIndex] = useState(0);
@@ -20,6 +19,7 @@ export default function Container ({updateScore, resetScore}){
 	const [answerEvaluated, setAnswerEvaluated] = useState(false);
 	const [tryAgain, setTryAgain] = useState(false);
 	const [endGame, setEndGame] = useState(false);
+	const [roundScore, setRoundScore] = useState([correct,incorrect])
 
 //implement once dev is finished and then check restarting okay.
 //	useEffect(() =>{		
@@ -79,11 +79,10 @@ export default function Container ({updateScore, resetScore}){
 		if(answeredAllCorrectly()){
 			setTryAgain(false)
 			setEndGame(true);
-			resetScore()
 		}else{
 			setTryAgain(true)	
-			setAnswerEvaluated(false)		
-			resetScore();
+			setAnswerEvaluated(false)
+			setRoundScore([correct,incorrect])
 			setIndex(0);
 			setQuestionSet(incorrectResponses);
 			setIncorrectResponses([]);
@@ -101,6 +100,7 @@ export default function Container ({updateScore, resetScore}){
 	function toggleTryAgain (){
 		if (tryAgain === true){
 			setTryAgain(false);
+			resetScore()
 		}else{
 			setTryAgain(true);
 		}
@@ -110,7 +110,8 @@ export default function Container ({updateScore, resetScore}){
 		if (endGame === true){
 			setEndGame(false);
 			setQuestionSet(questionMaster);
-			setIndex(0)	
+			setIndex(0)
+			resetScore()	
 		}else{
 			setEndGame(true);
 		}
@@ -130,13 +131,13 @@ export default function Container ({updateScore, resetScore}){
 	}else if(tryAgain === true){
 	
 		return(
-			<Message gameType="Try Again" msg="Keep trying until you get 100%"  btnMsg="Continue" toggle={toggleTryAgain} />
+			<Message msgHead={`${roundScore[0]}:correct / ${roundScore[1]}: incorrect`} msg="Now go back and try the ones you missed." btnMsg="Continue" toggle={toggleTryAgain} />
 			
 		)
 	}
 	else if (endGame === true){
 		return(
-			<Message gameType="Congrats!" msg="You've got 100%!"  btnMsg="Continue" toggle={toggleEndGame} />
+			<Message msgHead="Congrats!" msg="You've got 100%!"  btnMsg="Continue" toggle={toggleEndGame} />
 		)
 	}
 }
