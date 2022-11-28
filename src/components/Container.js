@@ -12,7 +12,8 @@ import {testQuestions} from '../data/user.js';
 //***** Container is the Controlling container for the question card and *********************
 //***** manages state of everything not in the NavBar.*****************************************
 export default function Container ({updateScore, resetScore}){
-	
+	const [questionMaster, setQuestionMaster]= useState(testQuestions);
+
 	const [questionSet,setQuestionSet] = useState(testQuestions)
 	const [incorrectResponses, setIncorrectResponses] = useState([])
 	const [index, setIndex] = useState(0);
@@ -105,16 +106,15 @@ export default function Container ({updateScore, resetScore}){
 		}
 	};
 	
-	function toggleEndGame (){
-		alert('not implemented yet.')
-		/*
+	function toggleEndGame (){		
 		if (endGame === true){
 			setEndGame(false);
-			
+			setQuestionSet(questionMaster);
+			setIndex(0)	
 		}else{
 			setEndGame(true);
 		}
-		*/
+		
 	}
 
 	if(endGame === false && tryAgain === false){
