@@ -27,10 +27,19 @@ export default function App() {
     setCorrect(user.correctResponses);
     setIncorrect(user.incorrectResponses);
   }
+  function createNewUser(){
+    console.log('create me!')
+  }
+  function handleChange(e){
+    console.log(user)
+    setUser(users[e.target.value])
+    console.log(user);
+
+  };
 
   return (
     <div>
-      <Nav user={user} correct={correct} incorrect={incorrect}  />
+      <Nav user={user} correct={correct} incorrect={incorrect} createNewUser={createNewUser} selectUser={handleChange} />
       <Container updateScore={updateScore} resetScore={resetScore}/>
     </div>
   );
