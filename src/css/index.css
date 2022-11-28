@@ -1,134 +1,144 @@
-body{
-	background-color:rgb(185, 216, 243);
+body {
+	background-color: rgb(185, 216, 243);
 }
 
-button{
-	width:5rem;
-	height:5rem;
-	margin-top:2%;
-	font-size:1rem;
+button {
+	width: 5rem;
+	height: 5rem;
+	margin-top: 2%;
+	font-size: 1rem;
 }
 
 
 
 /*NAVBAR styles*/
-#navbar{
-	display:flex;
-	justify-content:space-evenly;
-	flex-direction:row;
-	align-items:center;
-	padding:1%;
-	height:30px;
-	border-radius:15px;
-	background-color:rgb(151, 199, 241);
+#navbar {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	padding: 1%;
+	height: 30px;
+	border-radius: 15px;
+	background-color: rgb(151, 199, 241);
 }
-.navWrapper{
-	width:25%;
-	display:flex;
-	flex-direction:row;
-	justify-content:space-between;
-	align-items:center;
+#navbar>* {
+	margin: 3%;
 }
+
+
+
 
 
 
 
 /*CARD styles*/
-#container{
-	border:1px solid black;
-	background-color:white;
-	padding:2%;
-	margin-left:22%;
-	margin-top:2%;
-	width:50%;
-	height:650px;
+#container {
+	border: 1px solid black;
+	background-color: white;
+	padding: 2%;
+	margin-left: 22%;
+	margin-top: 2%;
+	width: 50%;
+	height: 650px;
 	/*min-height: 650px;
 	max-height: 650px;*/
-	display:flex;
-	flex-direction:column;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
 }
-#question{
+
+#question {
 	min-height: 50px;
 	max-height: 50px;
 }
-#optionsBox{
-	display:flex;
-	flex-direction:column;
-	min-width:75%;
+
+#optionsBox {
+	display: flex;
+	flex-direction: column;
+	min-width: 75%;
 	min-height: 500px;
 	max-height: 500px;
 }
-.optionItem{
-	border:1px solid black;
+
+.optionItem {
+	border: 1px solid black;
 	min-width: 75%;
-	margin:3%;
-	padding:3%;
+	margin: 3%;
+	padding: 3%;
 }
-.optionItem:hover{
-	background-color:rgb(151, 199, 241);
+
+.optionItem:hover {
+	background-color: rgb(151, 199, 241);
 }
+
 .selectedOption {
-	border:2px solid blue;
+	border: 2px solid blue;
 	min-width: 75%;
-	margin:3%;
-	padding:3%;
+	margin: 3%;
+	padding: 3%;
 }
 
 /*Finished message */
-#message{
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	background-color:yellow;
+#message {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: yellow;
 	border: 1px solid black;
 	box-shadow: 1px 1px 1px;
-	width:75%;
-	height:50%;
-	padding:1%;
+	width: 75%;
+	height: 50%;
+	padding: 1%;
 }
-#message >p{
-	font-size:x-large;
+
+#message>p {
+	font-size: x-large;
 }
 
 /*MEDIA Queries*/
 
 /*widths*/
 /*-------------  < 900px  -----------*/
-@media screen and (max-width:900px){
-	.navWrapper{
-		width:50%;
+@media screen and (max-width:900px) {
+	.navWrapper {
+		width: 50%;
 	}
-	h1,h2{
-		font-size:1rem
-	}
-}
-@media screen and (max-width: 900px){
-	#container{
-		justify-content:space-evenly;
-		width:95%;
-		margin:1%;
+
+	h1,
+	h2 {
+		font-size: 1rem
 	}
 }
 
-@media screen and (max-width: 900px){
-	#question{
-		font-size:100%;
-		
+@media screen and (max-width: 900px) {
+	#container {
+		justify-content: space-evenly;
+		width: 95%;
+		margin: 1%;
 	}
 }
+
+@media screen and (max-width: 900px) {
+	#question {
+		font-size: 100%;
+
+	}
+}
+
 /*-------------  < 400px  -----------*/
-@media screen and (max-width: 400px){
-	#container{
-		justify-content:space-evenly;
-		width:95%;
-	
-		
+@media screen and (max-width: 400px) {
+	#container {
+		justify-content: space-evenly;
+		width: 95%;
+
+
 	}
 }
-@media screen and (max-width: 400px){
-	#optionsBox{
-		display:flex;
+
+@media screen and (max-width: 400px) {
+	#optionsBox {
+		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		min-height: 300px;
@@ -136,16 +146,20 @@ button{
 	}
 
 }
-@media screen and (max-width:300px){
-	.navWrapper >*{
-		margin:3%;
-		font-size:small;
+
+@media screen and (max-width:300px) {
+	.navWrapper>* {
+		margin: 3%;
+		font-size: small;
 	}
-	h1,h2{
-		font-size:xx-small;
+
+	h1,
+	h2 {
+		font-size: xx-small;
 	}
-	#container{
-		height:100vh;
+
+	#container {
+		height: 100vh;
 	}
 
 }
@@ -153,18 +167,19 @@ button{
 
 /*Height*/
 /*-------------  < 700px  -----------*/
-@media screen and (max-height: 700px){
-	#container{
-		min-height:500px;
-		max-height:500px;
-		padding:4%;
-		justify-content:space-evenly;
+@media screen and (max-height: 700px) {
+	#container {
+		min-height: 500px;
+		max-height: 500px;
+		padding: 4%;
+		justify-content: space-evenly;
 	}
 }
-@media screen and (max-height: 700px){
-	#optionsBox{
-		min-height:400px;
-		max-height:400px;
+
+@media screen and (max-height: 700px) {
+	#optionsBox {
+		min-height: 400px;
+		max-height: 400px;
 
 	}
 }
