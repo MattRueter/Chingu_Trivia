@@ -1,45 +1,29 @@
 import React, {useState} from 'react';
-
 import '../css/index.css';
 import Nav from './Nav.js';
 import Container from './Container.js';
-import {users} from '../data/user.js';
+
 
 export default function App() {
-  
-  const [user, setUser] = useState(users[1])
-	const [correct, setCorrect] = useState(user.correctResponses);
-	const [incorrect, setIncorrect] = useState(user.incorrectResponses);
+	const [correct, setCorrect] = useState(0);
+  const [incorrect, setIncorrect] = useState(0);
 
-  function updateScore(correctOrIncorrect){
-    
+  function updateScore(correctOrIncorrect){    
     if(correctOrIncorrect==='correct'){
-      user.updateScore("correct")
-      setCorrect(user.correctResponses)
-    }else{
-      user.updateScore("incorrect")
-      setIncorrect(user.incorrectResponses)
+      setCorrect(correct + 1)
+    }else{      
+      setIncorrect(incorrect + 1)
     }
   }
 
-  function resetScore(){
-    user.resetScore();
-    setCorrect(user.correctResponses);
-    setIncorrect(user.incorrectResponses);
+  function resetScore(){    
+    setCorrect(0);
+    setIncorrect(0);
   }
-  function createNewUser(){
-    console.log('create me!')
-  }
-  function handleChange(e){
-    console.log(user)
-    setUser(users[e.target.value])
-    console.log(user);
-
-  };
 
   return (
     <div>
-      <Nav user={user} correct={correct} incorrect={incorrect} createNewUser={createNewUser} selectUser={handleChange} />
+      <Nav  correct={correct} incorrect={incorrect} />
       <Container updateScore={updateScore} resetScore={resetScore}/>
     </div>
   );
