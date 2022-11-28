@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-
 import {resetColor} from '../utility_functions/reset_color.js';
 import {resetHighlight} from '../utility_functions/reset_highlight.js';
 import Counter from './Counter.js';
@@ -80,6 +79,7 @@ export default function Container ({updateScore, resetScore}){
 		if(answeredAllCorrectly()){
 			setTryAgain(false)
 			setEndGame(true);
+			resetScore()
 		}else{
 			setTryAgain(true)	
 			setAnswerEvaluated(false)		
