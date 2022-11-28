@@ -19,7 +19,8 @@ export default function Container ({updateScore, resetScore, correct, incorrect}
 	const [answerEvaluated, setAnswerEvaluated] = useState(false);
 	const [tryAgain, setTryAgain] = useState(false);
 	const [endGame, setEndGame] = useState(false);
-	const [roundScore, setRoundScore] = useState([correct,incorrect])
+
+	const [total, setTotal] = useState([correct,incorrect])
 
 //implement once dev is finished and then check restarting okay.
 //	useEffect(() =>{		
@@ -35,19 +36,25 @@ export default function Container ({updateScore, resetScore, correct, incorrect}
 		}	
 	},[answerEvaluated])
 
-	function updateSelected(selectedOption){
-		setSelected(selectedOption);
+
+	function handleClick(){
+		if (answerEvaluated === true){
+			nextQuestion()
+		}else{
+			checkAnswer()
+		}
 	}
 
 	function nextQuestion (){		
-			if(index +2 > questionSet.length){
-				displayEndgame ();
-			}else{
-				setIndex(index + 1);			
-			}			
-			resetColor();
-			resetHighlight();
-			setAnswerEvaluated(false);		
+		if(index +2 > questionSet.length){
+			displayEndgame ();
+		}else{
+			setIndex(index + 1);			
+		}
+
+		resetColor();
+		resetHighlight();
+		setAnswerEvaluated(false);		
 	};
 
 
@@ -60,17 +67,14 @@ export default function Container ({updateScore, resetScore, correct, incorrect}
 			updateScore("incorrect");
 			createIncorrectArray(questionSet[index])
 		}
+
 		setAnswerEvaluated(true);
 	};
 	
-	function handleClick(){
-		if (answerEvaluated === true){
-			nextQuestion()
-		}else{
-			checkAnswer()
-		}
+	
+	function updateSelected(selectedOption){
+		setSelected(selectedOption);
 	}
-
 	function createIncorrectArray(question){
 		setIncorrectResponses(current =>[...current, question])
 	};
@@ -82,7 +86,7 @@ export default function Container ({updateScore, resetScore, correct, incorrect}
 		}else{
 			setTryAgain(true)	
 			setAnswerEvaluated(false)
-			setRoundScore([correct,incorrect])
+			setTotal([correct,incorrect])
 			setIndex(0);
 			setQuestionSet(incorrectResponses);
 			setIncorrectResponses([]);
@@ -128,16 +132,15 @@ export default function Container ({updateScore, resetScore, correct, incorrect}
 			</div>
 		)
 
-	}else if(tryAgain === true){
-	
+	}else if(tryAgain === true){	
 		return(
-			<Message msgHead={`${roundScore[0]}:correct / ${roundScore[1]}: incorrect`} msg="Now go back and try the ones you missed." btnMsg="Continue" toggle={toggleTryAgain} />
+			<Message msgHead={`${total[0]}:correct & ${total[1]}: incorrect`} msg="Now go back and try the ones you missed." btnMsg="Continue" toggle={toggleTryAgain} />
 			
 		)
 	}
 	else if (endGame === true){
 		return(
-			<Message msgHead="Congrats!" msg="You've got 100%!"  btnMsg="Continue" toggle={toggleEndGame} />
+			<Message msgHead="Congrats!" msg="You've got 100%!"  btnMsg="Restart" toggle={toggleEndGame} />
 		)
 	}
 }
