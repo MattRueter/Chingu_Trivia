@@ -1,4 +1,28 @@
-const testQuestions = [
+const loading =[
+	{
+		"question": "Loading Questions",
+		"id": 0,
+		"topic": "",
+		"choices": {
+		  "a": "",
+		  "b": "",
+		  "c": "",
+		  "d": ""
+		},
+		"answer": "d"
+	  }
+]
+
+export {loading}
+
+
+
+
+
+
+/*
+For trying app out / checking behaviour.
+const loading = [
 	{
 	  "question": "Which HTML5 element should contain important links for navigating a website?",
 	  "id": 1,
@@ -36,5 +60,4 @@ const testQuestions = [
 	  "answer": "a"
 	},
 ];
-
-export {testQuestions }
+*/

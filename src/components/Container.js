@@ -5,14 +5,15 @@ import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
 import Message from './Message.js';
-import {testQuestions} from '../data/user.js';
+import {loading} from '../data/user.js';
 
 //--------------------------------------------------------------------------------------------
 //***** Container controls state for all components within the question card *****************
 //--------------------------------------------------------------------------------------------
 export default function Container ({updateScore, resetScore, correct, incorrect}){
-	const [questionMaster, setQuestionMaster]= useState(testQuestions);
-	const [questionSet,setQuestionSet] = useState(testQuestions)
+	
+	const [questionMaster, setQuestionMaster]= useState(loading);
+	const [questionSet,setQuestionSet] = useState(loading)
 	const [incorrectResponses, setIncorrectResponses] = useState([])
 	const [index, setIndex] = useState(0);
 	const [selected, setSelected] = useState(null);
@@ -22,12 +23,17 @@ export default function Container ({updateScore, resetScore, correct, incorrect}
 
 	const [total, setTotal] = useState([correct,incorrect])
 
-//implement once dev is finished and then check restarting okay.
-//	useEffect(() =>{		
-//		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
-//		 .then((response) =>response.json())
-//		 .then((data) =>setQuestionSet(data)) 		 
-//	},[]);
+
+	useEffect(() =>{		
+		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
+		 .then((response) =>response.json())
+		 .then((data) =>{
+			setQuestionSet(data)
+			setQuestionMaster(data)
+		 });
+		  
+		 
+		},[]);
 
 	useEffect(() =>{	
 		if(endGame===false && tryAgain === false){
