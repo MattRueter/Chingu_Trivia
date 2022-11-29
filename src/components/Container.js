@@ -5,7 +5,7 @@ import Counter from './Counter.js';
 import Question from './Question.js';
 import Options from './Options.js';
 import Message from './Message.js';
-import {loading} from '../data/user.js';
+import {loading} from '../data/load.js';
 
 //--------------------------------------------------------------------------------------------
 //***** Container controls state for all components within the question card *****************
