@@ -3,13 +3,15 @@ body {
 }
 
 button {
-	width: 5rem;
-	height: 5rem;
+	border:5px dashed blue;
+	width: 175px;
+	height: 75px;
 	margin-top: 2%;
 	font-size: 1rem;
 }
-
-
+button:hover{
+	background-color: pink;
+}
 
 /*NAVBAR styles*/
 #navbar {
@@ -26,12 +28,6 @@ button {
 	margin: 3%;
 }
 
-
-
-
-
-
-
 /*CARD styles*/
 #container {
 	border: 1px solid black;
@@ -40,7 +36,7 @@ button {
 	margin-left: 22%;
 	margin-top: 2%;
 	width: 50%;
-	height: 650px;
+	height: 700px;
 	/*min-height: 650px;
 	max-height: 650px;*/
 	display: flex;
@@ -73,23 +69,23 @@ button {
 }
 
 .selectedOption {
-	border: 2px solid blue;
+	border: 5px solid blue;
 	min-width: 75%;
 	margin: 3%;
 	padding: 3%;
 }
 
-/*Finished message */
+/*Message component */
 #message {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: yellow;
+	background-color: rgb(78, 151, 255);
 	border: 1px solid black;
-	box-shadow: 1px 1px 1px;
+	box-shadow: 10px 10px 1px;
 	width: 75%;
 	height: 50%;
-	padding: 1%;
+	padding: 4%;
 }
 
 #message>p {
@@ -179,7 +175,7 @@ button {
 @media screen and (max-height: 700px) {
 	#optionsBox {
 		min-height: 400px;
-		max-height: 400px;
+		max-height: 300px;
 
 	}
 }
