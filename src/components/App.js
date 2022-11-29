@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../css/index.css';
+import '../css/styles.css';
 import Nav from './Nav.js';
 import CardContainer from './CardContainer.js';
 
