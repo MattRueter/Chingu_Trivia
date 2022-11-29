@@ -10,7 +10,7 @@ import {loading} from '../data/load.js';
 //--------------------------------------------------------------------------------------------
 //***** Container controls state for all components within the question card *****************
 //--------------------------------------------------------------------------------------------
-export default function Container ({updateScore, resetScore, correct, incorrect}){
+export default function CardContainer ({updateScore, resetScore, correct, incorrect}){
 	
 	const [questionMaster, setQuestionMaster]= useState(loading);
 	const [questionSet,setQuestionSet] = useState(loading)
@@ -20,9 +20,7 @@ export default function Container ({updateScore, resetScore, correct, incorrect}
 	const [answerEvaluated, setAnswerEvaluated] = useState(false);
 	const [tryAgain, setTryAgain] = useState(false);
 	const [endGame, setEndGame] = useState(false);
-
 	const [total, setTotal] = useState([correct,incorrect])
-
 
 	useEffect(() =>{		
 		fetch('https://johnmeade-webdev.github.io/chingu_quiz_api/trial.json')
@@ -30,10 +28,8 @@ export default function Container ({updateScore, resetScore, correct, incorrect}
 		 .then((data) =>{
 			setQuestionSet(data)
 			setQuestionMaster(data)
-		 });
-		  
-		 
-		},[]);
+		 });		 
+	},[]);
 
 	useEffect(() =>{	
 		if(endGame===false && tryAgain === false){
