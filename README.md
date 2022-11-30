@@ -31,9 +31,9 @@ CardContainer renders the main quiz card and each section within this card is a 
 
 
 # DOCUMENTATION:
-- [STATE](Chingu_Trivia/tree/readme#state)
-- [data and utility functions](Chingu_Trivia/tree/readme#data-and-utility_functions-directories)
-- [CardContainer functions & control flow](Chingu_Trivia/tree/readme#Chingu_Trivia/tree/readme#cardcontainer-functions-and-control-flow)
+- [STATE](#state)
+- [data and utility functions](#data-and-utility_functions-directories)
+- [CardContainer functions & control flow](#cardcontainer-functions-and-control-flow)
 
 ## **STATE:**
 There are three main categories for state:
