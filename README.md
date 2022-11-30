@@ -78,15 +78,17 @@ This is used in CardContainer to display the score and is and array made up of c
 
 ## ***Question arrays:***
 ``` javascript
-const [questionMaster, setQuestionMaster]
+const [questionMaster, setQuestionMaster] = useState(loading)
 ```
-This is where the question array is stored after the fetch.
+questionMaster is where the question array is stored after the fetch.
 ``` javascript
-const [incorrectResponses, setIncorrectResponses]
+const [incorrectResponses, setIncorrectResponses] 
 ```
-This is created and updated as the user gets answers wrong.
+incorrectResponses is created and updated as the user gets answers wrong.
 ``` javascript
-const [questionSet,setQuestionSet]
+const [questionSet,setQuestionSet] = useState(loading)
 ```
-Originally this was the only array holding the question objects. I then added the ability to retry missed questions and then the ability to do the whole quiz again (rather than reload the page).
-This variable is now a container for whichever set of questions are being 'played'. It changes to the incorrectResponses and then back to the Master depending on if a user has finsihed or not./
+questionSet was originally the only array holding the question objects. I then added the ability to retry missed questions and then the ability to do the whole quiz again (rather than reload the page).
+This variable is now a container for whichever set of questions are being 'played'. It changes to the incorrectResponses and then back to the Master depending on if a user has finsihed or not.
+
+*A loading "message" which is an object built out as a mock of a question object is what is actually passed in as the initial state. This is 1. in case the fetch is slow a message appears and 2. because errors would block the useEffect()after the first render due to the child components trying to read questions, options, etc... which would be currently null or undefined.
