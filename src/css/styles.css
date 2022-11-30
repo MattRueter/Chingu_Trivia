@@ -137,9 +137,6 @@ button:hover{
 }
 /*...but ------------- > 800px ---------- */
 @media screen and (min-height: 800px) {
-	#container{
-		/*height:500px;*/
-	}
 	.optionItem{
 		margin:2%;
 		padding:2%;
