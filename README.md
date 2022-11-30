@@ -1,9 +1,8 @@
 # Chingu-Trivia (solo project submission)
-
 Live Demo here...(eventually)
 
----
-## The quiz:
+
+# The quiz:
 
 This simple quiz app allows users to test their knowledge of a range of html, CSS & Javascript basics. 
 
@@ -11,8 +10,8 @@ The user selects their answer for each question and once they reach the end, the
 
 There is only a UI for quiz-takers. It's not designed to allow the creation of new questions or question sets by a 'quiz-maker' (i.e. a teacher, instructor, etc..).
 
----
-## Development:
+
+# Development:
 - installing locally
 - Component hierarchy
 - Documentation - State, API,utility functions etc.. 
@@ -34,8 +33,7 @@ CardContainer renders the main quiz card and each section within this card is a 
 # DOCUMENTATION:
 - STATE
 - data and utility functions
-- CardContainer functions
-- control flow
+- CardContainer functions & control flow
 
 ## **STATE:**
 There are three main categories for state:
@@ -91,4 +89,17 @@ const [questionSet,setQuestionSet] = useState(loading)
 questionSet was originally the only array holding the question objects. I then added the ability to retry missed questions and then the ability to do the whole quiz again (rather than reload the page).
 This variable is now a container for whichever set of questions are being 'played'. It changes to the incorrectResponses and then back to the Master depending on if a user has finsihed or not.
 
-*A loading "message" which mirrors the structure of a question object is what is actually passed in as the initial state. This is 1. in case the fetch is slow a message appears and 2. because errors would block the useEffect()after the first render due to the child components trying to read questions, options, etc... which would be currently null or undefined.
+*A loading "message" which mirrors the structure of a question object is what is actually passed in as the initial state. This is 1. in case the fetch is slow a message appears and 2. because errors would block the useEffect()after the first render due to the child components trying to read questions, options, etc... which would be currently null or undefined. This is a workaround I came up with but certainly there is a better way of dealing with the initial state.
+
+## **Data and Utility_functions directories:**
+- The ***Data*** directory contains the 'loading' object used to set the initial state of the questionSet array.
+- The ***Utility_functions*** directory contains functions which toggle classNames and styles related to selecting options and giving feedback if right or wrong (green & red). Since these operate on the DOM they may be best moved to a useEffect()call within the CardContainer component.
+
+## **CardContainer functions and control flow:**
+There are 9 functions defined here and 2 useEffect() calls. In the near future I'll likely come back to this project and add a Teacher/Student login to allow the creation of new questions/question sets. 
+Before doing this, CardContainer should be cleaned up as it is big and has the potential to become hard to reason about (if it isn't already) and is potentially buggy.
+
+I also suspect that defining many of its functions outside of the compoenent may be a better practice as they'd only be defined once rather than upon every call to render CardContainer.
+
+There are also three render calls nested in if/else statements. I'm sure they'll be a better way of dealing with that as well. 
+
