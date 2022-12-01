@@ -1,5 +1,5 @@
 # Chingu-Trivia (solo project submission)
-Live Demo here...(eventually)
+[Live Demo here](https://mattrueter.github.io/Chingu_Trivia/)
 
 
 # The quiz:
