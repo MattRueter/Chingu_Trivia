@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Chingu_Trivia/static/css/main.e30707d6.css",
-    "main.js": "/Chingu_Trivia/static/js/main.74d09564.js",
+    "main.js": "/Chingu_Trivia/static/js/main.f557de33.js",
     "index.html": "/Chingu_Trivia/index.html",
     "main.e30707d6.css.map": "/Chingu_Trivia/static/css/main.e30707d6.css.map",
-    "main.74d09564.js.map": "/Chingu_Trivia/static/js/main.74d09564.js.map"
+    "main.f557de33.js.map": "/Chingu_Trivia/static/js/main.f557de33.js.map"
   },
   "entrypoints": [
     "static/css/main.e30707d6.css",
-    "static/js/main.74d09564.js"
+    "static/js/main.f557de33.js"
   ]
 }
