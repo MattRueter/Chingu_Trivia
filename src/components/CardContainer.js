@@ -130,7 +130,7 @@ export default function CardContainer ({updateScore, resetScore, correct, incorr
 				<Counter questionNumber={index + 1} totalQuestions={questionSet.length} />
 				<Question currentQuestion={questionSet[index].question} />
 				<Options options={Object.entries(questionSet[index].choices)} answer={questionSet[index].answer} updateScore={updateScore} updateSelected={updateSelected} answerEvaluated={answerEvaluated}/>
-				<button id='nextBtn' onClick={handleClick}>CHECK</button>
+				<button id='nextBtn' onClick={handleClick}>NEXT</button>
 			</div>
 		)
 
