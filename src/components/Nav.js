@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 export default function Nav ({correct,incorrect}){	
 	return(
 		<nav id="navbar">		

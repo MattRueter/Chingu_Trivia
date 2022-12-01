@@ -4,9 +4,9 @@ body {
 
 button {
 	border:5px dashed blue;
-	width: 175px;
+	width: 55%;
 	height: 75px;
-	font-size: 1rem;
+	font-size: .8rem;
 }
 button:hover{
 	background-color: pink;
@@ -66,7 +66,7 @@ button:hover{
 }
 
 .selectedOption {
-	border: 5px solid blue;
+	border: 3px solid blue;
 	
 }
 
