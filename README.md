@@ -1,6 +1,10 @@
 # Chingu-Trivia (solo project submission)
 [Live Demo here](https://mattrueter.github.io/Chingu_Trivia/)
 
+## Purpose:
+To get accepted onto a Chingu voyage a submission of a project is required . *Chingu is an excellent wayt to get experience developing on a team. [Here is their site](https://www.chingu.io/)
+
+
 
 # The quiz:
 
